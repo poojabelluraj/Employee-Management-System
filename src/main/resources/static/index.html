@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Management System</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Connect JavaScript -->
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                Employee<br>
+                <span>Management</span>
+            </div>
+
+            <div class="menu-title">MAIN MENU</div>
+
+            <nav>
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#employees" class="nav-link">Employees</a>
+                <a href="#employee-form" class="nav-link">Add Employee</a>
+            </nav>
+
+            <div class="sidebar-note">
+                <strong>Employee Portal</strong>
+                <p>Manage employee information in one place.</p>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Dashboard Header -->
+            <header class="topbar" id="dashboard">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p class="subtitle">
+                        Welcome! Here is your employee overview.
+                    </p>
+                </div>
+
+                <div class="profile">
+                    Employee Administrator
+                </div>
+
+            </header>
+
+            <!-- Message Area -->
+            <div
+                id="message"
+                class="message"
+                role="status"
+                aria-live="polite">
+            </div>
+
+            <!-- Statistics Cards -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-label">Total Employees</div>
+
+                    <div class="stat-value" id="totalEmployees">—</div>
+
+                    <div class="stat-description">
+                        Registered employees
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Average Salary</div>
+
+                    <div class="stat-value" id="averageSalary">—</div>
+
+                    <div class="stat-description">
+                        Average employee salary
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">System Status</div>
+
+                    <div class="stat-value status-value" id="systemStatus">
+                        Connecting...
+                    </div>
+
+                    <div class="stat-description">
+                        Backend connection
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Add or Edit Employee -->
+            <section class="panel" id="employee-form">
+
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="formTitle">Add New Employee</h2>
+                        <p>Enter the employee details below.</p>
+                    </div>
+                </div>
+
+                <form id="employeeForm">
+
+                    <input type="hidden" id="employeeId">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter full name"
+                                maxlength="100"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="employee@example.com"
+                                maxlength="150"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+
+                            <input
+                                type="text"
+                                id="department"
+                                placeholder="e.g. IT, HR, Finance"
+                                maxlength="100"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salary">Salary (₹) *</label>
+
+                            <input
+                                type="number"
+                                id="salary"
+                                placeholder="Enter salary"
+                                min="0"
+                                step="0.01"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                            id="submitBtn">
+                            Add Employee
+                        </button>
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="cancelBtn"
+                            hidden>
+                            Cancel Edit
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="secondary-btn"
+                            id="clearBtn">
+                            Clear Form
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- Employee Directory -->
+            <section class="panel" id="employees">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h2>Employee Directory</h2>
+                        <p>View and manage registered employees.</p>
+                    </div>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        class="search-box"
+                        placeholder="Search employees..."
+                        aria-label="Search employees">
+
+                </div>
+
+                <!-- Employee Table -->
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Employee</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Salary</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="employeeTableBody">
+
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    Loading employees...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                Employee Management System |
+                Java · Spring Boot · MySQL
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
